@@ -1,0 +1,70 @@
+#This one was made about 2 weeks ago, and is the first I'm slightly proud of.
+#Although, I intentionally used a brute force method, I'll redo this later with a lot more optimization.
+#Also, finally using comments to explain some elements, thank god.
+#Finds how many decimal places until the reicprocal of a prime repeats.
+#Ex:  1/7 is 0.1428571428, it goes 14287 and then repeats indefinitely.
+
+import math
+
+prime = int(input("Input Prime"))
+
+dividend = 1 
+Loop_Done = False #multiplying dividend end
+Cycle_Done = False #multiplying prime end
+Full_Done = False #Final answer has been reached
+Result = 0 #to be used as the check for right decimal placement
+Result2 = 0 #to be used as the check for the multiplying
+Remainder_list = [] #the actual check for repeats
+mult = 1 #to be used for increasing dividend
+mult2 = 1 #to be used for increasing prime
+mult_total = 0 #to be used to account for zero's
+
+while Full_Done == False:
+    while Loop_Done == False:
+        Result = float(((10 ** mult) * dividend) - prime)
+        if Result < 0:
+            mult = mult + 1
+           
+            
+       
+        else:
+            Loop_Done = True
+            Loop_Done == True
+           
+  
+    while Cycle_Done == False:
+        Result2 = float(Result - (prime * mult2))
+        
+        if Result2 < 0:
+            Cycle_Done = True
+            
+        else:
+           mult2 = mult2 + 1
+           
+           
+    Result2 = float(Result - (prime * (mult2 - 1)))
+    if int(Result2) in Remainder_list:
+        Remainder_list.insert(len(Remainder_list),int(Result2))
+        Full_Done = True
+       
+    else:
+        if ((10 * Result2) - prime) < 0:
+            Remainder_list.insert(len(Remainder_list),((int(Result2))) * (10 ** mult))
+        
+        else:
+            Remainder_list.insert(len(Remainder_list),int(Result2))
+           # print (Remainder_list) remove for memory, keep to see the process
+            
+        if mult > 1:
+            mult_total = mult_total +  mult - 1
+            
+        Loop_Done = False 
+        Cycle_Done = False 
+        
+        Result =  Result2
+        dividend = Result2
+        mult = 1 
+        mult2 = 1 
+        
+print (Remainder_list)
+print (mult_total + len(Remainder_list) - 1)
