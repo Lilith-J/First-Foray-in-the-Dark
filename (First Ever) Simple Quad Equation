@@ -1,0 +1,24 @@
+#Forgot when this one was originally made, had to have been at least 1-2 years from now.
+#Not the worst first project, but clearly in need of improvement in both code and math.
+
+#Necessary Import due to sqrt() Function 
+
+from math import *
+
+#Inputing Values
+
+A_value = input("Enter A value : ")
+
+B_value = input("Enter B value : ")
+
+C_value = input("Enter C value : ")
+
+# Storing the Results of the Quadratic Formula
+
+x1 = str(((int(B_value) * -1) + sqrt(pow(int(B_value),2) - (4 * int(A_value) * int(C_value)))) / (2 * int(A_value)))
+x2 = str(((int(B_value) * -1) - sqrt(pow(int(B_value),2) - (4 * int(A_value) * int(C_value)))) / (2 * int(A_value)))
+
+# Printing Results with String
+
+print("x1 = " + x1)
+print("x2 = " + x2)
