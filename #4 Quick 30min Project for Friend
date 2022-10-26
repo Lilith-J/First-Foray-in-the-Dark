@@ -1,0 +1,28 @@
+#Didn't make anything fancy, just a simple simulation for DnD dice probabilities
+
+import math
+import random
+average_rolls = [2.5, 3.5, 4.5, 5.5, 5.5, 6.5, 10.5]
+roll_log = []
+sim_total = 0
+sequence_total = 0
+sim = 0
+while sim < 99999:
+    i = 0
+    while i < 7:
+        x = random.randint(1,175)
+        #print("random number:",x)
+        if x not in roll_log:
+            roll_log.insert(i,x)
+            roll = math.ceil((x/25))
+            #print("dice type:",roll)
+            a_roll = average_rolls[roll - 1]
+            #print("average roll",a_roll)
+            sequence_total = sequence_total + a_roll
+            #print("sequence_total",sequence_total)
+            i = i + 1
+    roll_log.clear()
+    sim_total = sim_total + sequence_total
+    sequence_total = 0
+    sim = sim + 1
+print("sim_total",sim_total/sim)
